@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages"
+		date="2015-09-02T08:47:07Z" product-name="lbr_sitemap">
+		<header />
+		<body>
+			
+			<!-- Plugin Names -->
+			<trans-unit id="pi1">
+				<source>Seitenübersicht: Allgemein</source>
+			</trans-unit>
+			<trans-unit id="pi2">
+				<source>Seitenübersicht: Abschnitte</source>
+			</trans-unit>
+			
+			<!-- Table pages -->
+			<trans-unit id="pages.div.sitemap">
+				<source>Seitenübersicht</source>
+			</trans-unit>
+			<trans-unit id="pages.description">
+				<source>Seitenübersicht: Beschreibung</source>
+			</trans-unit>
+			<trans-unit id="pages.image">
+				<source>Seitenübersicht: Bild</source>
+			</trans-unit>
+			<trans-unit id="pages.changefreq">
+				<source>Seitenübersicht: Voraussichtliche Änderungs-Häufigkeit</source>
+			</trans-unit>
+			<trans-unit id="pages.changefreq.always">
+				<source>immer (Änderung bei jedem Zugriff)</source>
+			</trans-unit>
+			<trans-unit id="pages.changefreq.hourly">
+				<source>stündlich</source>
+			</trans-unit>
+			<trans-unit id="pages.changefreq.daily">
+				<source>täglich</source>
+			</trans-unit>
+			<trans-unit id="pages.changefreq.weekly">
+				<source>wöchentlich</source>
+			</trans-unit>
+			<trans-unit id="pages.changefreq.monthly">
+				<source>monatlich</source>
+			</trans-unit>
+			<trans-unit id="pages.changefreq.yearly">
+				<source>jährlich</source>
+			</trans-unit>
+			<trans-unit id="pages.changefreq.never">
+				<source>nie (archivierte Seiten)</source>
+			</trans-unit>
+			<trans-unit id="pages.priority">
+				<source>Seitenübersicht: Priorität dieser Seite gegenüber anderen Seiten dieser Webpräsenz.</source>
+			</trans-unit>
+			
+			<!-- Flexform Pi1 -->
+			<trans-unit id="flexform_pi1.sheetTitle">
+				<source>Einstellungen</source>
+			</trans-unit>
+			<trans-unit id="flexform_pi1.layout">
+				<source>Layout</source>
+			</trans-unit>
+			<trans-unit id="flexform_pi1.layout.tree">
+				<source>Baumstruktur</source>
+			</trans-unit>
+			<trans-unit id="flexform_pi1.layout.tree_with_abstract">
+				<source>Baumstruktur mit Inhaltsangabe</source>
+			</trans-unit>
+			<trans-unit id="flexform_pi1.layout.tree_from_directory">
+				<source>Baumstruktur mit allen Seiten im Ordner (special = directory)</source>
+			</trans-unit>
+			<trans-unit id="flexform_pi1.layout.tree_from_directory_with_abstract">
+				<source>Baumstruktur mit allen Seiten im Ordner und Inhaltsangabe (special = directory)</source>
+			</trans-unit>
+			<trans-unit id="flexform_pi1.layout.index">
+				<source>Index</source>
+			</trans-unit>
+			<trans-unit id="flexform_pi1.layout.index_with_abstract">
+				<source>Index mit Inhaltsangabe</source>
+			</trans-unit>
+			<trans-unit id="flexform_pi1.layout.search">
+				<source>Suchfeld</source>
+			</trans-unit>
+			<trans-unit id="flexform_pi1.cssClass">
+				<source>CSS-Klasse</source>
+			</trans-unit>
+			
+			<!-- Flexform Pi2 -->
+			<trans-unit id="flexform_pi2.sheetTitle">
+				<source>Einstellungen</source>
+			</trans-unit>
+			<trans-unit id="flexform_pi2.layout">
+				<source>Layout</source>
+			</trans-unit>
+			<trans-unit id="flexform_pi1.layout.overview_from_directory">
+				<source>Titel + Bild + Beschreibung von allen Unterseiten</source>
+			</trans-unit>
+			<trans-unit id="flexform_pi1.layout.overview_from_directory_small">
+				<source>Titel + Beschreibung von allen Unterseiten in schmaler Ansicht</source>
+			</trans-unit>
+			
+		</body>
+	</file>
+</xliff>

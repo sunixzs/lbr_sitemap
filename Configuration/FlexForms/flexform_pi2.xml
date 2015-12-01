@@ -1,0 +1,94 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:lbr_sitemap/Resources/Private/Language/locallang_db.xlf:flexform_pi2.sheetTitle</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.pages>
+						<TCEforms>
+							<label>LLL:EXT:lang/locallang_general.xlf:LGL.startingpoint</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<maxitems>22</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+								<size>3</size>
+								<wizard>
+									<suggest>
+										<type>suggest</type>
+									</suggest>
+								</wizard>
+							</config>
+						</TCEforms>
+					</settings.pages>
+					
+					<settings.recursive>
+						<TCEforms>
+							<label>LLL:EXT:lang/locallang_general.xlf:LGL.recursive</label>
+							<config>
+								<type>select</type>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:cms/locallang_ttc.xml:recursive.I.0</numIndex>
+										<numIndex index="1">0</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:cms/locallang_ttc.xml:recursive.I.1</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:cms/locallang_ttc.xml:recursive.I.2</numIndex>
+										<numIndex index="1">2</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:cms/locallang_ttc.xml:recursive.I.3</numIndex>
+										<numIndex index="1">3</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:cms/locallang_ttc.xml:recursive.I.4</numIndex>
+										<numIndex index="1">4</numIndex>
+									</numIndex>
+									<numIndex index="5" type="array">
+										<numIndex index="0">LLL:EXT:cms/locallang_ttc.xml:recursive.I.5</numIndex>
+										<numIndex index="1">250</numIndex>
+									</numIndex>
+								</items>
+								<minitems>0</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+								<default>0</default>
+							</config>
+						</TCEforms>
+					</settings.recursive>
+					
+					<settings.layout>
+						<TCEforms>
+							<label>LLL:EXT:lbr_sitemap/Resources/Private/Language/locallang_db.xlf:flexform_pi2.layout</label>
+							<config>
+								<type>select</type>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:lbr_sitemap/Resources/Private/Language/locallang_db.xlf:flexform_pi2.overview_from_directory</numIndex>
+										<numIndex index="1">overview_from_directory</numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:lbr_sitemap/Resources/Private/Language/locallang_db.xlf:flexform_pi2.overview_from_directory_small</numIndex>
+										<numIndex index="1">overview_from_directory_small</numIndex>
+									</numIndex>
+								</items>
+								<minitems>1</minitems>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+						</TCEforms>
+					</settings.layout>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

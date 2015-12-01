@@ -1,0 +1,45 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+	<f:render section="{settings.layout}" arguments="{_all}" />
+</f:section>
+
+<f:section name="overview_from_directory">
+	<f:if condition="{pages -> f:count()}">
+		<div class="tx-lbr-sitemap-overview">
+			<f:for each="{pages}" as="page" iteration="i">
+				<div class="grid-columnes">
+					<div class="grid-section grid-group grid_of_3">
+						<div class="grid-col span_1_of_3">
+							<div class="grid-col span_1_of_1">
+								<f:if condition="{page.image}">
+									<f:render partial="Link" section="Image" arguments="{page:page}" />
+								</f:if>
+							</div>
+						</div>
+						<div class="grid-col span_2_of_3">
+							<h2><i class="fa fa-arrow-right"></i><f:render partial="Link" section="Default" arguments="{page:page}" /></h2>
+							<f:if condition="{page.description}">{page.description -> f:format.html()}</f:if>
+						</div>
+					</div>
+				</div>
+			</f:for>
+		</div>
+	</f:if>
+</f:section>
+
+<f:section name="overview_from_directory_small">
+	<f:if condition="{pages -> f:count()}">
+		<nav class="tx-lbr-sitemap-overview-small">
+			<ul>
+				<f:for each="{pages}" as="page" iteration="i">
+					<li class="{f:if(condition:'{page.uid} == {current}', then:'current')}">
+						<h3><i class="fa fa-arrow-right"></i><f:render partial="Link" section="Default" arguments="{page:page}" /></h3>
+						<f:if condition="{page.description}"><div class="description">{page.description -> f:format.html()}</div></f:if>
+					</li>
+				</f:for>
+			</ul>
+		</nav>
+	</f:if>
+</f:section>
+

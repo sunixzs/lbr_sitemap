@@ -1,0 +1,58 @@
+<f:section name="Default">
+	<f:if condition="{page.externalLink}">
+		<f:then>
+			<f:if condition="{page.urltype} == 3">
+				<f:then>
+					<f:link.email email="{page.externalLink}" class="email">{page.title}</f:link.email>
+				</f:then>
+				<f:else>
+					<f:link.external uri="{page.urlProtocol}{page.url}" target="{page.target}" class="external">{page.title}</f:link.external>
+				</f:else>
+			</f:if>
+		</f:then>
+		<f:else>
+			<f:if condition="{page.shortcutPid}">
+				<f:then>
+					<f:link.page pageUid="{page.shortcutPid}" target="{page.target}" class="shortcut">{page.title}</f:link.page>
+				</f:then>
+				<f:else>
+					<f:link.page pageUid="{page.uid}" target="{page.target}" class="internal">{page.title}</f:link.page>
+				</f:else>
+			</f:if>
+		</f:else>
+	</f:if>
+</f:section>
+
+<f:section name="Image">
+	<f:if condition="{page.externalLink}">
+		<f:then>
+			<f:if condition="{page.urltype} == 3">
+				<f:then>
+					<f:link.email email="{page.externalLink}" class="email"><f:render section="ImageContent" arguments="{image:page.image}" /></f:link.email>
+				</f:then>
+				<f:else>
+					<f:link.external uri="{page.urlProtocol}{page.url}" target="{page.target}" class="external"><f:render section="ImageContent" arguments="{image:page.image}" /></f:link.external>
+				</f:else>
+			</f:if>
+		</f:then>
+		<f:else>
+			<f:if condition="{page.shortcutPid}">
+				<f:then>
+					<f:link.page pageUid="{page.shortcutPid}" target="{page.target}" class="shortcut"><f:render section="ImageContent" arguments="{image:page.image}" /></f:link.page>
+				</f:then>
+				<f:else>
+					<f:link.page pageUid="{page.uid}" target="{page.target}" class="internal"><f:render section="ImageContent" arguments="{image:page.image}" /></f:link.page>
+				</f:else>
+			</f:if>
+		</f:else>
+	</f:if>
+</f:section>
+
+<f:section name="ImageContent">
+<figure class="tx-lbrsitemap-image">
+		<span data-method="lbr-image-lazy-load" data-src-500="{f:uri.image(src:image.uid, maxWidth:500, treatIdAsReference:'1')}" data-src-1000="{f:uri.image(src:image.uid, maxWidth:1000, treatIdAsReference:'1')}" data-src-1500="{f:uri.image(src:image.uid, maxWidth:1500, treatIdAsReference:'1')}" data-src-2000="{f:uri.image(src:image.uid, maxWidth:2000, treatIdAsReference:'1')}">
+			{f:image(src:image.uid, width:320, treatIdAsReference:'1', alt:image.originalResource.alternative, title:image.originalResource.title, class:'')}
+		</span>
+	<f:if condition="{image.originalResource.description}"><figcaption>{image.originalResource.description -> f:format.html()}</figcaption></f:if>
+</figure>
+</f:section>

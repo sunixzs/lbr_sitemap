@@ -1,0 +1,28 @@
+<div class="lbr-sitemap-search" id="lbr-sitemap-search-{data.uid}"></div>
+<script>
+<![CDATA[
+$(document).ready(function () {
+	var o = $(".lbr-sitemap-list a, .lbr-sitemap-tree a"),
+		s = [],
+		f = $('<input class="lbr-sitemap-search-field" type="search" placeholder="]]>{f:translate(key:'search.placeholder')}<![CDATA[">'),
+		t = $(']]>{f:translate(key:'search.description')}<![CDATA[');
+	
+	$("#lbr-sitemap-search-]]>{data.uid}<![CDATA[").append([f, t]);
+	
+	o.each(function () {
+		s.push( { obj : $(this), str : $(this).text().toLowerCase() });
+	});
+	
+	f.keyup(function () {
+		var v = f.val().toLowerCase().replace(/^\s+|\s+$/g, '');
+		if (!v) {
+			o.css({opacity: 1});
+			return;
+		}
+		for (var i in s) {
+			s[i].obj.css({opacity: (s[i].str.indexOf(v) > -1) ? 1 : .2 });
+		}
+	});
+})
+]]>
+</script>

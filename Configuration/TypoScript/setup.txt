@@ -1,0 +1,22 @@
+plugin.tx_lbrsitemap {
+	view {
+		templateRootPath = {$plugin.tx_lbrsitemap.view.templateRootPath}
+		templateRootPaths.100 = {$plugin.tx_lbrsitemap.view.templateRootPath}
+		partialRootPath = {$plugin.tx_lbrsitemap.view.partialRootPath}
+		partialRootPaths.100 = {$plugin.tx_lbrsitemap.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_lbrsitemap.view.layoutRootPath}
+		layoutRootPaths.100 = {$plugin.tx_lbrsitemap.view.layoutRootPath}
+		pluginNamespace = tx_lbrsitemap_piAll
+	}
+	persistence {
+		storagePid = {$plugin.tx_lbrsitemap.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+	
+	settings {
+	
+	}
+}

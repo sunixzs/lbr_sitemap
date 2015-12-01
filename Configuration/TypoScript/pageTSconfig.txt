@@ -1,0 +1,17 @@
+# Plugin-Wizard
+mod.wizards.newContentElement.wizardItems.plugins.elements.tx_lbrsitemap_pi1 {
+    icon = gfx/c_wiz/regular_text.gif
+    title = Seitenübersicht: Allgemein
+    description = Übersicht von Seiten in unterschiedlichen Darstellungen
+    tt_content_defValues.CType = list
+    tt_content_defValues.list_type = lbrsitemap_pi1
+}
+
+
+mod.wizards.newContentElement.wizardItems.plugins.elements.tx_lbrsitemap_pi2 {
+    icon = gfx/c_wiz/regular_text.gif
+    title = Seitenübersicht: Abschnitte
+    description = Übersicht von ausgewählten Seiten. Im Gegensatz zur normalen Sitemap werden auch Seiten angezeigt, die in der Navigation versteckt sind. Zusätzlich wird Sitemap-Bild und Sitemap-Beschreibung ausgegeben.
+    tt_content_defValues.CType = list
+    tt_content_defValues.list_type = lbrsitemap_pi2
+}

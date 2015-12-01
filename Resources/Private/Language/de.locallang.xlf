@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-07-28T16:09:29Z" product-name="lbr_sitemap" target-language="de">
+		<header/>
+		<body>
+			<trans-unit id="search.placeholder">
+				<target>Seite suchen ...</target>
+			</trans-unit>
+			<trans-unit id="search.description">
+				<target><![CDATA[<p><br />Geben Sie in das Feld den Titel einer Seite ein, um diesen hervorzuheben.</p>]]></target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
