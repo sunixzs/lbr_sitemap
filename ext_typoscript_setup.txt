@@ -183,8 +183,6 @@ tx_lbrsitemap_xml {
 		persistence < plugin.tx_lbrsitemap.persistence
 		settings < plugin.tx_lbrsitemap.settings
 		settings {
-			changefreq = weekly
-			priority = 1
 			rootpageUids {
 				1 {
 					uid = 1
