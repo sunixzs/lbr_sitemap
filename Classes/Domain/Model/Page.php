@@ -258,7 +258,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		}
 		
 		if ($this->getShortcutMode () == 1) {
-			$pageRepository = new \LBR\LbrPagescal\Domain\Repository\PageRepository ();
+			$pageRepository = new \LBR\LbrSitemap\Domain\Repository\PageRepository ();
 			$firstSubPage = $pageRepository->findFirstSubPage ( $this );
 			if (! $firstSubPage) {
 				return 0;
