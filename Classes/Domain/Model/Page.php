@@ -258,13 +258,11 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		}
 		
 		if ($this->getShortcutMode () == 1) {
-			$pageRepository = new \LBR\LbrSitemap\Domain\Repository\PageRepository ();
+			// $pageRepository = new \LBR\LbrSitemap\Domain\Repository\PageRepository ();
+			$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance ( 'TYPO3\\CMS\\Extbase\\Object\\ObjectManager' );
+			$pageRepository = $objectManager->get ( 'LBR\\LbrSitemap\\Domain\\Repository\\PageRepository' );
 			$firstSubPage = $pageRepository->findFirstSubPage ( $this );
-			if (! $firstSubPage) {
-				return 0;
-			} else {
-				return $firstSubPage->getUid ();
-			}
+			return ($firstSubPage) ? $firstSubPage->getUid () : 0;
 		}
 		
 		return 0;
