@@ -7,94 +7,94 @@
 			
 			<!-- Plugin Names -->
 			<trans-unit id="pi1">
-				<source>Seitenübersicht: Allgemein</source>
+				<source>Sitemap: Tree and Index</source>
 			</trans-unit>
 			<trans-unit id="pi2">
-				<source>Seitenübersicht: Abschnitte</source>
+				<source>Sitemap: Sections</source>
 			</trans-unit>
 			
 			<!-- Table pages -->
 			<trans-unit id="pages.div.sitemap">
-				<source>Seitenübersicht</source>
+				<source>Sitemap</source>
 			</trans-unit>
 			<trans-unit id="pages.description">
-				<source>Seitenübersicht: Beschreibung</source>
+				<source>Sitemap: Description</source>
 			</trans-unit>
 			<trans-unit id="pages.image">
-				<source>Seitenübersicht: Bild</source>
+				<source>Sitemap: Image</source>
 			</trans-unit>
 			<trans-unit id="pages.changefreq">
-				<source>Seitenübersicht: Voraussichtliche Änderungs-Häufigkeit</source>
+				<source>Sitemap: Estimated change frequency</source>
 			</trans-unit>
 			<trans-unit id="pages.changefreq.always">
-				<source>immer (Änderung bei jedem Zugriff)</source>
+				<source>always (Changes each time)</source>
 			</trans-unit>
 			<trans-unit id="pages.changefreq.hourly">
-				<source>stündlich</source>
+				<source>hourly</source>
 			</trans-unit>
 			<trans-unit id="pages.changefreq.daily">
-				<source>täglich</source>
+				<source>daily</source>
 			</trans-unit>
 			<trans-unit id="pages.changefreq.weekly">
-				<source>wöchentlich</source>
+				<source>weekly</source>
 			</trans-unit>
 			<trans-unit id="pages.changefreq.monthly">
-				<source>monatlich</source>
+				<source>monthly</source>
 			</trans-unit>
 			<trans-unit id="pages.changefreq.yearly">
-				<source>jährlich</source>
+				<source>yearly</source>
 			</trans-unit>
 			<trans-unit id="pages.changefreq.never">
-				<source>nie (archivierte Seiten)</source>
+				<source>never (archived pages)</source>
 			</trans-unit>
 			<trans-unit id="pages.priority">
-				<source>Seitenübersicht: Priorität dieser Seite gegenüber anderen Seiten dieser Webpräsenz.</source>
+				<source>Sitemap: Priority of this page relative to other pages of this website.</source>
 			</trans-unit>
 			
 			<!-- Flexform Pi1 -->
 			<trans-unit id="flexform_pi1.sheetTitle">
-				<source>Einstellungen</source>
+				<source>Settings</source>
 			</trans-unit>
 			<trans-unit id="flexform_pi1.layout">
 				<source>Layout</source>
 			</trans-unit>
 			<trans-unit id="flexform_pi1.layout.tree">
-				<source>Baumstruktur</source>
+				<source>Tree</source>
 			</trans-unit>
 			<trans-unit id="flexform_pi1.layout.tree_with_abstract">
-				<source>Baumstruktur mit Inhaltsangabe</source>
+				<source>Tree with abstract</source>
 			</trans-unit>
 			<trans-unit id="flexform_pi1.layout.tree_from_directory">
-				<source>Baumstruktur mit allen Seiten im Ordner (special = directory)</source>
+				<source>Tree with all subpages (special = directory)</source>
 			</trans-unit>
 			<trans-unit id="flexform_pi1.layout.tree_from_directory_with_abstract">
-				<source>Baumstruktur mit allen Seiten im Ordner und Inhaltsangabe (special = directory)</source>
+				<source>Tree with all subpages and abstarct (special = directory)</source>
 			</trans-unit>
 			<trans-unit id="flexform_pi1.layout.index">
 				<source>Index</source>
 			</trans-unit>
 			<trans-unit id="flexform_pi1.layout.index_with_abstract">
-				<source>Index mit Inhaltsangabe</source>
+				<source>Index with abstract</source>
 			</trans-unit>
 			<trans-unit id="flexform_pi1.layout.search">
-				<source>Suchfeld</source>
+				<source>Search field</source>
 			</trans-unit>
 			<trans-unit id="flexform_pi1.cssClass">
-				<source>CSS-Klasse</source>
+				<source>CSS-Class</source>
 			</trans-unit>
 			
 			<!-- Flexform Pi2 -->
 			<trans-unit id="flexform_pi2.sheetTitle">
-				<source>Einstellungen</source>
+				<source>Settings</source>
 			</trans-unit>
 			<trans-unit id="flexform_pi2.layout">
 				<source>Layout</source>
 			</trans-unit>
 			<trans-unit id="flexform_pi1.layout.overview_from_directory">
-				<source>Titel + Bild + Beschreibung von allen Unterseiten</source>
+				<source>Title + image + description of all subpages</source>
 			</trans-unit>
 			<trans-unit id="flexform_pi1.layout.overview_from_directory_small">
-				<source>Titel + Beschreibung von allen Unterseiten in schmaler Ansicht</source>
+				<source>Title + image + description of all subpages in a smaller view</source>
 			</trans-unit>
 			
 		</body>
