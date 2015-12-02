@@ -223,7 +223,7 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			$uriBuilder->reset ();
 			$uriBuilder->setAbsoluteUriScheme ( true );
 			$uriBuilder->setTargetPageUid ( $targetPageUid );
-			$xml .= '<loc>' . $uriBuilder->build () . '</loc>';
+			$xml .= '<loc>' . htmlentities ( $uriBuilder->build (), ENT_XML1, "UTF-8" ) . '</loc>';
 			
 			// lastmod
 			$latestContentElement = $this->contentRepository->findOneLatest ( $page );
