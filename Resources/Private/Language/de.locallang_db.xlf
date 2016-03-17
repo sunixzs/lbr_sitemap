@@ -18,13 +18,19 @@
 				<target>Seitenübersicht</target>
 			</trans-unit>
 			<trans-unit id="pages.description">
-				<target>Seitenübersicht: Beschreibung</target>
+				<target>Beschreibung</target>
 			</trans-unit>
 			<trans-unit id="pages.image">
-				<target>Seitenübersicht: Bild</target>
+				<target>Bild</target>
+			</trans-unit>
+			<trans-unit id="pages.palette.lbrsitemap_sitemapxml">
+				<target>sitemap.xml</target>
+			</trans-unit>
+			<trans-unit id="pages.palette.lbrsitemap_content">
+				<target>Inhalte</target>
 			</trans-unit>
 			<trans-unit id="pages.changefreq">
-				<target>Seitenübersicht: Voraussichtliche Änderungs-Häufigkeit</target>
+				<target>Voraussichtliche Änderungs-Häufigkeit</target>
 			</trans-unit>
 			<trans-unit id="pages.changefreq.always">
 				<target>immer (Änderung bei jedem Zugriff)</target>
@@ -48,7 +54,10 @@
 				<target>nie (archivierte Seiten)</target>
 			</trans-unit>
 			<trans-unit id="pages.priority">
-				<target>Seitenübersicht: Priorität dieser Seite gegenüber anderen Seiten dieser Webpräsenz.</target>
+				<target>Priorität dieser Seite gegenüber anderen Seiten dieser Webpräsenz.</target>
+			</trans-unit>
+			<trans-unit id="pages.hideinxml">
+				<source>Diese Seite niemals in der sitemap.xml anzeigen?</source>
 			</trans-unit>
 			
 			<!-- Flexform Pi1 -->

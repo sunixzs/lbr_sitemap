@@ -158,12 +158,18 @@ $tempColumns = array (
 		) 
 );
 
-$GLOBALS[ 'TCA' ][ 'pages' ][ 'palettes' ][ 'lbrsitemap_sitemapxml' ][ 'showitem' ] = 'tx_lbrsitemap_hideinxml, tx_lbrsitemap_changefreq, tx_lbrsitemap_priority';
-$GLOBALS[ 'TCA' ][ 'pages' ][ 'palettes' ][ 'lbrsitemap_content' ][ 'showitem' ] = 'tx_lbrsitemap_description, --linebreak--, tx_lbrsitemap_image';
+$GLOBALS[ 'TCA' ][ 'pages_language_overlay' ][ 'palettes' ][ 'lbrsitemap_sitemapxml' ][ 'showitem' ] = 'tx_lbrsitemap_hideinxml, tx_lbrsitemap_changefreq, tx_lbrsitemap_priority';
+$GLOBALS[ 'TCA' ][ 'pages_language_overlay' ][ 'palettes' ][ 'lbrsitemap_content' ][ 'showitem' ] = 'tx_lbrsitemap_description, --linebreak--, tx_lbrsitemap_image';
 
-// ... add to pages
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns ( 'pages', $tempColumns );
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes ( "pages", 
+// ... add to pages_language_overlay
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns ( 'pages_language_overlay', $tempColumns );
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes ( "pages_language_overlay", 
 		"--div--;LLL:EXT:lbr_sitemap/Resources/Private/Language/locallang_db.xlf:pages.div.sitemap,
 		--palette--;LLL:EXT:lbr_sitemap/Resources/Private/Language/locallang_db.xlf:pages.palette.lbrsitemap_sitemapxml;lbrsitemap_sitemapxml,
 		--palette--;LLL:EXT:lbr_sitemap/Resources/Private/Language/locallang_db.xlf:pages.palette.lbrsitemap_content;lbrsitemap_content", "", "" );
+
+// add columnes for translation
+$GLOBALS[ 'TCA' ][ 'pages_language_overlay' ][ 'interface' ][ 'showRecordFieldList' ] .= ', tx_lbrsitemap_changefreq, tx_lbrsitemap_priority, tx_lbrsitemap_description, tx_lbrsitemap_image, tx_lbrsitemap_hideinxml';
+
+
+

@@ -183,14 +183,11 @@ tx_lbrsitemap_xml {
 		persistence < plugin.tx_lbrsitemap.persistence
 		settings < plugin.tx_lbrsitemap.settings
 		settings {
+			dokTypes = 1,2,10,11,12
 			rootpageUids {
 				1 {
 					uid = 1
-					depth = 10
-				}
-				2 {
-					uid = 39
-					depth = 1
+					depth = 5
 				}
 			}
 		}

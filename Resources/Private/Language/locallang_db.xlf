@@ -17,14 +17,20 @@
 			<trans-unit id="pages.div.sitemap">
 				<source>Sitemap</source>
 			</trans-unit>
+			<trans-unit id="pages.palette.lbrsitemap_sitemapxml">
+				<target>sitemap.xml</target>
+			</trans-unit>
+			<trans-unit id="pages.palette.lbrsitemap_content">
+				<target>Content</target>
+			</trans-unit>
 			<trans-unit id="pages.description">
-				<source>Sitemap: Description</source>
+				<source>Description</source>
 			</trans-unit>
 			<trans-unit id="pages.image">
-				<source>Sitemap: Image</source>
+				<source>Image</source>
 			</trans-unit>
 			<trans-unit id="pages.changefreq">
-				<source>Sitemap: Estimated change frequency</source>
+				<source>Estimated change frequency</source>
 			</trans-unit>
 			<trans-unit id="pages.changefreq.always">
 				<source>always (Changes each time)</source>
@@ -48,7 +54,10 @@
 				<source>never (archived pages)</source>
 			</trans-unit>
 			<trans-unit id="pages.priority">
-				<source>Sitemap: Priority of this page relative to other pages of this website.</source>
+				<source>Priority of this page relative to other pages of this website.</source>
+			</trans-unit>
+			<trans-unit id="pages.hideinxml">
+				<source>Never show this page in sitemap.xml?</source>
 			</trans-unit>
 			
 			<!-- Flexform Pi1 -->

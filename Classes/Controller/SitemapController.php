@@ -181,12 +181,17 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	
 	/**
 	 * action xml
-	 *
-	 * @return void
+	 * @throws \Exception
+	 * @return string XML
 	 */
 	public function xmlAction() {
 		if (isset ( $this->settings[ 'rootpageUids' ] ) === FALSE || is_array ( $this->settings[ 'rootpageUids' ] ) === FALSE) {
-			throw new \Exception ( "You have to define settings.rootpageUids with the keys uid and depth!" );
+			throw new \Exception ( "You have to define settings.rootpageUids with the keys uid and depth!", 1458210595 );
+		}
+		
+		$dokTypes = \TYPO3\CMS\Extbase\Utility\ArrayUtility::integerExplode ( ",", $this->settings[ 'dokTypes' ] );
+		if (! count ( $dokTypes )) {
+			throw new \Exception ( "You have to define settings.dokTypes! (almost: 1,2)", 1458210596 );
 		}
 		
 		// define some variables
@@ -198,7 +203,8 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		$i = 0;
 		foreach ( $this->settings[ 'rootpageUids' ] as $rootpageConfiguration ) {
 			if (isset ( $rootpageConfiguration[ 'uid' ] ) && isset ( $rootpageConfiguration[ 'depth' ] )) {
-				$pagesUidStr = $queryGenerator->getTreeList ( ( integer ) $rootpageConfiguration[ 'uid' ], ( integer ) $rootpageConfiguration[ 'depth' ], 0, " doktype IN (1,2,4) AND nav_hide = 0" );
+				$pagesUidStr = $queryGenerator->getTreeList ( ( integer ) $rootpageConfiguration[ 'uid' ], ( integer ) $rootpageConfiguration[ 'depth' ], 0, 
+						" doktype IN (" . implode ( ",", $dokTypes ) . ")" );
 				if ($pagesUidStr) {
 					$pagesArr = array_merge ( $pagesArr, \TYPO3\CMS\Extbase\Utility\ArrayUtility::integerExplode ( ",", $pagesUidStr ) );
 				}
@@ -209,21 +215,28 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		$pages = $this->pageRepository->findByUidArray ( array_unique ( $pagesArr ) );
 		
 		// build xml
+		$builtUris = [ ];
 		$xml = '<?xml version="1.0" encoding="UTF-8"?>';
 		$xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 		foreach ( $pages as $page ) {
+			if ($page->isNavHide () || $page->isHideinxml () || $page->getDoktype () == 4) {
+				continue;
+			}
+			
 			$xml .= '<url>';
 			
 			// location
-			$targetPageUid = (in_array ( $page->getDoktype (), array (
-					1,
-					2 
-			) )) ? $page->getUid () : $page->getShortcutPid ();
-			
 			$uriBuilder->reset ();
 			$uriBuilder->setAbsoluteUriScheme ( true );
-			$uriBuilder->setTargetPageUid ( $targetPageUid );
-			$xml .= '<loc>' . htmlentities ( $uriBuilder->build (), ENT_XML1, "UTF-8" ) . '</loc>';
+			$uriBuilder->setTargetPageUid ( $page->getUid () );
+			
+			$uri = $uriBuilder->build ();
+			if (in_array ( $uri, $builtUris )) {
+				continue;
+			}
+			$builtUris[] = $uri;
+			
+			$xml .= '<loc>' . htmlentities ( $uri, ENT_XML1, "UTF-8" ) . '</loc>';
 			
 			// lastmod
 			$latestContentElement = $this->contentRepository->findOneLatest ( $page );
@@ -232,6 +245,7 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			} else if ($page->getTstamp ()) {
 				$xml .= '<lastmod>' . $page->getTstamp ()->format ( "c" ) . '</lastmod>';
 			}
+			unset ( $latestContentElement );
 			
 			// changefreq
 			if ($page->getChangefreq ()) {
@@ -245,8 +259,10 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			
 			$xml .= '</url>';
 		}
+		
 		$xml .= '</urlset>';
 		
+		$xml .= '<!-- count: ' . count ( $builtUris ) . ' URI -->';
 		return $xml;
 	}
 }

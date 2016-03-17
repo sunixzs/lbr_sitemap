@@ -4,8 +4,9 @@
 CREATE TABLE pages (
 	tx_lbrsitemap_description text NOT NULL,
 	tx_lbrsitemap_image int(11) unsigned NOT NULL default '0',
-	tx_lbrsitemap_changefreq  varchar(7) DEFAULT '' NOT NULL,
-	tx_lbrsitemap_priority  varchar(3) DEFAULT '' NOT NULL,
+	tx_lbrsitemap_changefreq varchar(7) DEFAULT '' NOT NULL,
+	tx_lbrsitemap_priority varchar(3) DEFAULT '' NOT NULL,
+	tx_lbrsitemap_hideinxml tinyint(1) unsigned DEFAULT '0' NOT NULL,
 );
 
 #
@@ -16,4 +17,5 @@ CREATE TABLE pages_language_overlay (
 	tx_lbrsitemap_image int(11) unsigned NOT NULL default '0',
 	tx_lbrsitemap_changefreq  varchar(7) DEFAULT '' NOT NULL,
 	tx_lbrsitemap_priority  varchar(3) DEFAULT '' NOT NULL,
+	tx_lbrsitemap_hideinxml tinyint(1) unsigned DEFAULT '0' NOT NULL,
 );

@@ -68,6 +68,56 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 	
 	/**
+	 * navHide
+	 *
+	 * @var boolean
+	 */
+	protected $navHide = false;
+	
+	/**
+	 * Returns the boolean state of navHide
+	 *
+	 * @return boolean $navHide
+	 */
+	public function getNavHide() {
+		return $this->navHide;
+	}
+	
+	/**
+	 * Returns the boolean state of navHide
+	 *
+	 * @return boolean $navHide
+	 */
+	public function isNavHide() {
+		return $this->getNavHide ();
+	}
+	
+	/**
+	 * hideinxml
+	 *
+	 * @var boolean
+	 */
+	protected $hideinxml = false;
+	
+	/**
+	 * Returns the boolean state of hideinxml
+	 *
+	 * @return boolean $hideinxml
+	 */
+	public function getHideinxml() {
+		return $this->hideinxml;
+	}
+	
+	/**
+	 * Returns the boolean state of hideinxml
+	 *
+	 * @return boolean $hideinxml
+	 */
+	public function isHideinxml() {
+		return $this->getHideinxml ();
+	}
+	
+	/**
 	 * subtitle
 	 *
 	 * @var string
