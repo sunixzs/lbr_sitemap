@@ -163,7 +163,11 @@ tx_lbrsitemap_xml {
 		disableAllHeaderCode = 1
 		xhtml_cleaning = 0
 		admPanel = 0
-		additionalHeaders = Content-type: text/xml
+		additionalHeaders {
+			10 {
+				header = Content-type: text/xml
+			}
+		}
 		no_cache = 0
 	}
 
@@ -183,7 +187,7 @@ tx_lbrsitemap_xml {
 		persistence < plugin.tx_lbrsitemap.persistence
 		settings < plugin.tx_lbrsitemap.settings
 		settings {
-			dokTypes = 1,2,10,11,12
+			dokTypes = 1,2,4
 			rootpageUids {
 				1 {
 					uid = 1

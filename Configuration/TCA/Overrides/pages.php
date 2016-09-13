@@ -14,14 +14,18 @@ $tempColumns = array (
 						'eval' => 'trim',
 						'wizards' => array (
 								'RTE' => array (
+										'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_rte.gif',
 										'notNewRecords' => 1,
 										'RTEonly' => 1,
-										'type' => 'script',
-										'title' => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',
-										'icon' => 'wizard_rte2.gif',
 										'module' => array (
-												'name' => 'wizard_rte' 
-										) 
+												'name' => 'wizard_rich_text_editor',
+												'urlParameters' => array (
+														'mode' => 'wizard',
+														'act' => 'wizard_rte.php' 
+												) 
+										),
+										'title' => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',
+										'type' => 'script' 
 								) 
 						) 
 				),

@@ -228,7 +228,7 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			
 			// location
 			$uriBuilder->reset ();
-			$uriBuilder->setAbsoluteUriScheme ( true );
+			$uriBuilder->setCreateAbsoluteUri ( true );
 			$uriBuilder->setTargetPageUid ( $page->getUid () );
 			
 			$uri = $uriBuilder->build ();
