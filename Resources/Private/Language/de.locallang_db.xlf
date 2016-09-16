@@ -57,7 +57,7 @@
 				<target>Priorität dieser Seite gegenüber anderen Seiten dieser Webpräsenz.</target>
 			</trans-unit>
 			<trans-unit id="pages.hideinxml">
-				<source>Diese Seite niemals in der sitemap.xml anzeigen?</source>
+				<target>Diese Seite niemals in der sitemap.xml anzeigen?</target>
 			</trans-unit>
 			
 			<!-- Flexform Pi1 -->
