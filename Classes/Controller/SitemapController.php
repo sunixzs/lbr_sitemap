@@ -222,7 +222,8 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		$xml .= PHP_EOL . '	xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
 		
 		foreach ( $pages as $page ) {
-			if ($page->isNavHide () || $page->isHideinxml () || $page->getDoktype () == 4) {
+			//if ($page->isNavHide () || $page->isHideinxml () || $page->getDoktype () == 4) {
+			if ($page->isHideinxml () || $page->getDoktype () == 4) {
 				continue;
 			}
 			
