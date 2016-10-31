@@ -6,6 +6,7 @@ config.tx_extbase.persistence.classes {
 			tx_lbrsitemap_priority.mapOnProperty = priority
 			tx_lbrsitemap_description.mapOnProperty = description
 			tx_lbrsitemap_image.mapOnProperty = image
+			tx_lbrsitemap_hideinxml.mapOnProperty = hideinxml
 		}
 	}
 	
@@ -15,144 +16,120 @@ config.tx_extbase.persistence.classes {
 }
 
 tx_lbrsitemap_link_config {
-	doNotLinkIt = 1
-	stdWrap.cObject = CASE
-	stdWrap.cObject {
-		key.field = doktype
-		
-		default = TEXT
-		default {
-			field = nav_title // title
-			stdWrap.htmlSpecialChars = 1
-			typolink {
-				parameter.field = uid
-				ATagParams = class="{field:tx_template_css_class}"
-				ATagParams.insertData = 1
-				title.field = subtitle // title
-			}
-		}
-		
-		# doktype: shortcut
-		4 < .default
-		4 {
-			typolink.parameter.field = shortcut
-		}
-		
-		# doktype: external url
-		3 < .default
-		3 {
-			field = title
-			typolink.parameter.field = url
-			typolink.extTarget.field = target
-		}
-	}
+  field = nav_title // title
+  stdWrap.replacement.10.search.char = 124
+  stdWrap.replacement.10.replace = &shy;
+  ATagParams.dataWrap = class="{field:tx_template_css_class}"
+  ATagTitle.field = subtitle // nav_title // title
+  ATagTitle.stdWrap.replacement.10.search.char = 124
+  ATagTitle.stdWrap.replacement.10.replace = 
 }
 
 
 
 plugin.tx_lbrsitemap {
-	settings {
-		tree = HMENU
-		tree {
-			special = list
-			special.value = WILL BE SET BY CONTROLLER
-			wrap = <nav class="lbr-sitemap lbr-sitemap-tree">|</nav>
-			1 = TMENU
-			1 {
-				wrap = <ul>|</ul>
-				expAll = 1
-				
-				NO < tx_lbrsitemap_link_config
-				NO {
-					wrapItemAndSub = <li>|</li>
-					#stdWrap.htmlSpecialChars = 1
-					#ATagTitle.field = subtitle
-				}
-			}
-		}
-		
-		tree_from_directory < .tree
-		tree_from_directory.special = directory
-		
-		tree_with_abstract = HMENU
-		tree_with_abstract {
-			special = list
-			special.value = WILL BE SET BY CONTROLLER
-			wrap = <nav class="lbr-sitemap lbr-sitemap-tree">|</nav>
-			1 = TMENU
-			1 {
-				wrap = <ul>|</ul>
-				expAll = 1
-				NO {
-					wrapItemAndSub = <li>|</li>
-					linkWrap = <div class="lbr-sitemap-link">|</div>
-					stdWrap.htmlSpecialChars = 1
-					ATagTitle.field = subtitle
-					after {
-						data = field : abstract
-						required = 1
-						htmlSpecialChars = 1
-						wrap = <div class="lbr-sitemap-abstract">|</div>
-					}	
-				}
-			}
-		}
-		
-		tree_from_directory_with_abstract < .tree_with_abstract
-		tree_from_directory_with_abstract.special = directory
-		
-		index = COA
-		index {
-			wrap = <ul class="lbr-sitemap-list">|</ul>
-			
-			1 = HMENU
-			1 {
-				special = list
-				special.value = WILL BE SET BY CONTROLLER
-				wrap = <li><div class="lbr-sitemap-char" id="char_###INDEX###">###CHAR###</div>|</li>
-				1 = TMENU
-				1 {
-					wrap = <ul>|</ul>
-					alternativeSortingField = nav_title // title
-					
-					NO < tx_lbrsitemap_link_config
-					NO {
-						wrapItemAndSub = <li>|</li>
-						#stdWrap.htmlSpecialChars = 1
-						#ATagTitle.field = subtitle
-					}
-				}
-			}
-		}
-		
-		index_with_abstract = COA
-		index_with_abstract {
-			wrap = <ul class="lbr-sitemap-list">|</ul>
-			
-			1 = HMENU
-			1 {
-				special = list
-				special.value = WILL BE SET BY CONTROLLER
-				wrap = <li><div class="lbr-sitemap-char" id="char_###INDEX###">###CHAR###</div>|</li>
-				1 = TMENU
-				1 {
-					wrap = <ul>|</ul>
-					alternativeSortingField = title
-					NO {
-						wrapItemAndSub = <li>|</li>
-						stdWrap.htmlSpecialChars = 1
-						ATagTitle.field = subtitle
-						after {
-							data = field : abstract
-							required = 1
-							htmlSpecialChars = 1
-							wrap = <div class="lbr-sitemap-abstract">|</div>
-						}	
-					}
-				}
-			}
-		}
-	}
+  settings {
+    tree = HMENU
+    tree {
+      special = list
+      special.value = WILL BE SET BY CONTROLLER
+      wrap = <nav class="lbr-sitemap lbr-sitemap-tree">|</nav>
+      1 = TMENU
+      1 {
+        wrap = <ul>|</ul>
+        expAll = 1
+        
+        NO < tx_lbrsitemap_link_config
+        NO {
+          wrapItemAndSub = <li>|</li>
+          #stdWrap.htmlSpecialChars = 1
+          #ATagTitle.field = subtitle
+        }
+      }
+    }
+    
+    tree_from_directory < .tree
+    tree_from_directory.special = directory
+    
+    tree_with_abstract = HMENU
+    tree_with_abstract {
+      special = list
+      special.value = WILL BE SET BY CONTROLLER
+      wrap = <nav class="lbr-sitemap lbr-sitemap-tree">|</nav>
+      1 = TMENU
+      1 {
+        wrap = <ul>|</ul>
+        expAll = 1
+        NO {
+          wrapItemAndSub = <li>|</li>
+          linkWrap = <div class="lbr-sitemap-link">|</div>
+          stdWrap.htmlSpecialChars = 1
+          ATagTitle.field = subtitle
+          after {
+            data = field : abstract
+            required = 1
+            htmlSpecialChars = 1
+            wrap = <div class="lbr-sitemap-abstract">|</div>
+          }  
+        }
+      }
+    }
+    
+    tree_from_directory_with_abstract < .tree_with_abstract
+    tree_from_directory_with_abstract.special = directory
+    
+    index = COA
+    index {
+      wrap = <div class="box-items-wrap box-item-layout-columnes blog-box-items-wrap" data-box-item-max-cols="3" data-box-item-min-size-2-cols="480">|</div>
+      
+      1 = HMENU
+      1 {
+        special = list
+        special.value = WILL BE SET BY CONTROLLER
+        wrap = <div class="box-item"><ul class="lbr-sitemap-list"><li><div class="lbr-sitemap-char" id="char_###INDEX###">###CHAR###</div>|</li></ul></div>
+        1 = TMENU
+        1 {
+          wrap = <ul>|</ul>
+          alternativeSortingField = nav_title // title
+          
+          NO < tx_lbrsitemap_link_config
+          NO {
+            wrapItemAndSub = <li>|</li>
+            #stdWrap.htmlSpecialChars = 1
+            #ATagTitle.field = subtitle
+          }
+        }
+      }
+    }
+    
+    index_with_abstract = COA
+    index_with_abstract {
+      wrap = <ul class="lbr-sitemap-list">|</ul>
+      
+      1 = HMENU
+      1 {
+        special = list
+        special.value = WILL BE SET BY CONTROLLER
+        wrap = <li><div class="lbr-sitemap-char" id="char_###INDEX###">###CHAR###</div>|</li>
+        1 = TMENU
+        1 {
+          wrap = <ul>|</ul>
+          alternativeSortingField = title
+          NO {
+            wrapItemAndSub = <li>|</li>
+            stdWrap.htmlSpecialChars = 1
+            ATagTitle.field = subtitle
+            after {
+              data = field : abstract
+              required = 1
+              htmlSpecialChars = 1
+              wrap = <div class="lbr-sitemap-abstract">|</div>
+            }  
+          }
+        }
+      }
+    }
+  }
 }
 
 
@@ -169,6 +146,7 @@ tx_lbrsitemap_xml {
 			}
 		}
 		no_cache = 0
+		index_enable = 0
 	}
 
 	10 = USER
