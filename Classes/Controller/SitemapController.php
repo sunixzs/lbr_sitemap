@@ -44,6 +44,14 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	protected $pageRepository;
 	
 	/**
+	 * pageTranslationRepository
+	 *
+	 * @var \LBR\LbrSitemap\Domain\Repository\PageTranslationRepository
+	 * @inject
+	 */
+	protected $pageTranslationRepository;
+	
+	/**
 	 * contentRepository
 	 *
 	 * @var \LBR\LbrSitemap\Domain\Repository\ContentRepository
@@ -183,6 +191,7 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 * action xml
 	 * @throws \Exception
 	 * @return string XML
+	 * @todo Check and implement the correct crdate/lastmod of content elements in translations.
 	 */
 	public function xmlAction() {
 		if (isset ( $this->settings[ 'rootpageUids' ] ) === FALSE || is_array ( $this->settings[ 'rootpageUids' ] ) === FALSE) {
@@ -222,7 +231,7 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		$xml .= PHP_EOL . '	xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
 		
 		foreach ( $pages as $page ) {
-			//if ($page->isNavHide () || $page->isHideinxml () || $page->getDoktype () == 4) {
+			// if ($page->isNavHide () || $page->isHideinxml () || $page->getDoktype () == 4) {
 			if ($page->isHideinxml () || $page->getDoktype () == 4) {
 				continue;
 			}
@@ -262,6 +271,59 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			}
 			
 			$xml .= PHP_EOL . '	</url>';
+		}
+		
+		$additionalLanguages = \TYPO3\CMS\Extbase\Utility\ArrayUtility::integerExplode ( ",", $this->settings[ 'additionalLanguages' ] );
+		if (count ( $additionalLanguages )) {
+			foreach ( $additionalLanguages as $additionalLanguage ) {
+				// find the pages
+				$pagesTranslation = $this->pageTranslationRepository->findByPidArray ( array_unique ( $pagesArr ), $additionalLanguage );
+				foreach ( $pagesTranslation as $page ) {
+					// if ($page->isNavHide () || $page->isHideinxml () || $page->getDoktype () == 4) {
+					if ($page->isHideinxml () || $page->getDoktype () == 4) {
+						continue;
+					}
+					
+					// location
+					$uriBuilder->reset ();
+					$uriBuilder->setCreateAbsoluteUri ( true );
+					$uriBuilder->setTargetPageUid ( $page->getPid () );
+					$uriBuilder->setArguments ( [ 
+							"L" => $additionalLanguage 
+					] );
+					
+					$uri = $uriBuilder->build ();
+					if (in_array ( $uri, $builtUris )) {
+						continue;
+					}
+					$builtUris[] = $uri;
+					
+					$xml .= PHP_EOL . '	<url>';
+					
+					$xml .= PHP_EOL . '		<loc>' . htmlentities ( $uri, ENT_XML1, "UTF-8" ) . '</loc>';
+					
+					// lastmod
+					$latestContentElement = $this->contentRepository->findOneLatest ( $page );
+					if ($latestContentElement && $latestContentElement->getTstamp ()) {
+						$xml .= PHP_EOL . '		<lastmod>' . $latestContentElement->getTstamp ()->format ( "c" ) . '</lastmod>';
+					} else if ($page->getTstamp ()) {
+						$xml .= PHP_EOL . '		<lastmod>' . $page->getTstamp ()->format ( "c" ) . '</lastmod>';
+					}
+					unset ( $latestContentElement );
+					
+					// changefreq
+					if ($page->getChangefreq ()) {
+						$xml .= PHP_EOL . '		<changefreq>' . $page->getChangefreq () . '</changefreq>';
+					}
+					
+					// priority
+					if ($page->getPriority ()) {
+						$xml .= PHP_EOL . '		<priority>' . $page->getPriority () . '</priority>';
+					}
+					
+					$xml .= PHP_EOL . '	</url>';
+				}
+			}
 		}
 		
 		$xml .= PHP_EOL . '</urlset>';
