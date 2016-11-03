@@ -172,6 +172,7 @@ tx_lbrsitemap_xml {
 					depth = 5
 				}
 			}
+			additionalLanguages = 
 		}
 	}
 }
