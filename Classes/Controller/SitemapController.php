@@ -217,13 +217,14 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		// build xml
 		$builtUris = [ ];
 		$xml = '<?xml version="1.0" encoding="UTF-8"?>';
-		$xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+		$xml .= PHP_EOL . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"';
+		$xml .= PHP_EOL . '	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"';
+		$xml .= PHP_EOL . '	xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
+		
 		foreach ( $pages as $page ) {
 			if ($page->isNavHide () || $page->isHideinxml () || $page->getDoktype () == 4) {
 				continue;
 			}
-			
-			$xml .= '<url>';
 			
 			// location
 			$uriBuilder->reset ();
@@ -236,33 +237,35 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			}
 			$builtUris[] = $uri;
 			
-			$xml .= '<loc>' . htmlentities ( $uri, ENT_XML1, "UTF-8" ) . '</loc>';
+			$xml .= PHP_EOL . '	<url>';
+			
+			$xml .= PHP_EOL . '		<loc>' . htmlentities ( $uri, ENT_XML1, "UTF-8" ) . '</loc>';
 			
 			// lastmod
 			$latestContentElement = $this->contentRepository->findOneLatest ( $page );
 			if ($latestContentElement && $latestContentElement->getTstamp ()) {
-				$xml .= '<lastmod>' . $latestContentElement->getTstamp ()->format ( "c" ) . '</lastmod>';
+				$xml .= PHP_EOL . '		<lastmod>' . $latestContentElement->getTstamp ()->format ( "c" ) . '</lastmod>';
 			} else if ($page->getTstamp ()) {
-				$xml .= '<lastmod>' . $page->getTstamp ()->format ( "c" ) . '</lastmod>';
+				$xml .= PHP_EOL . '		<lastmod>' . $page->getTstamp ()->format ( "c" ) . '</lastmod>';
 			}
 			unset ( $latestContentElement );
 			
 			// changefreq
 			if ($page->getChangefreq ()) {
-				$xml .= '<changefreq>' . $page->getChangefreq () . '</changefreq>';
+				$xml .= PHP_EOL . '		<changefreq>' . $page->getChangefreq () . '</changefreq>';
 			}
 			
 			// priority
 			if ($page->getPriority ()) {
-				$xml .= '<priority>' . $page->getPriority () . '</priority>';
+				$xml .= PHP_EOL . '		<priority>' . $page->getPriority () . '</priority>';
 			}
 			
-			$xml .= '</url>';
+			$xml .= PHP_EOL . '	</url>';
 		}
 		
-		$xml .= '</urlset>';
+		$xml .= PHP_EOL . '</urlset>';
 		
-		$xml .= '<!-- count: ' . count ( $builtUris ) . ' URI -->';
+		$xml .= PHP_EOL . '<!-- count: ' . count ( $builtUris ) . ' URI -->';
 		return $xml;
 	}
 }
